@@ -41,5 +41,12 @@ let kata8 = "JAKA DIKOJOY PAPA MANTAN";
 console.log(kata8, kata8.toLowerCase());
 
 // presisi transmisi angka
-let angka = 123;
-console.log(angka.i(10));
+let a = "12";
+let b = perseInt(a);
+console.log(typeof a);
+console.log(typeof b);
+console.log(a + b);
+
+//presisi transmisi bilangan 
+let c = 12.2;
+console.log(parsefloat(c));
