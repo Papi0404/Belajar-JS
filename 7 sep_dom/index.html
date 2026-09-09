@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <title>Kartu Nama Januar</title> 
+  <style> 
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; } 
+    .kartu { width: 350px; margin: auto; padding: 20px; border: 1px solid black; border-radius: 12px; } 
+    button { padding: 8px 14px; } 
+  </style> 
+</head> 
+<body> 
+  <div class="kartu"> 
+    <h2 id="nama"></h2> 
+    <p>Sekolah: <span id="sekolah"></span></p> 
+    <p>Motto: <span id="motto"></span></p> 
+    <p>Kota: <span id="kota"></span></p> 
+    <button id="tombol">Ubah Motto</button> 
+  </div> 
+ 
+  <script> 
+    let nama = "Januar Zidane Tinendeng"; 
+    let sekolah = "SMK Negeri 8 Jakarta"; 
+    let motto = "Belajar hari ini, sukses di masa depan"; 
+    let kota = "Jakarta"; 
+ 
+    document.getElementById("nama").textContent = nama; 
+    document.getElementById("sekolah").textContent = sekolah; 
+    document.getElementById("motto").textContent = motto; 
+    document.getElementById("kota").textContent = kota; 
+ 
+    document.getElementById("tombol").addEventListener("click", function() { 
+      motto = "Jangan menyerah sebelum berhasil"; 
+      document.getElementById("motto").textContent = motto; 
+    }); 
+  </script> 
+</body> 
+</html> 
