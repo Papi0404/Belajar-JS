@@ -8,4 +8,3 @@ button.addEventListener("click", function () {
 
     console.log("Nama: " + nama);
     console.log("Motto: " + motto);
-});
