@@ -7,6 +7,29 @@
 </head>
 <body>
     <h2>ini latihan parseint</h2>
-    <script src="script.js"></script>
+    <form>
+        <label for="pembelian">Masukkan Total Pembelian:</label>
+        <input type="text" id="pembelian" name="pembelian" value="">
+        <br><br>
+        <label for="pajak">Masukkan Persentase Pajak (dalam desimal):</label>
+        <input type="text" id="pajak" name="pajak" value="0.05">
+        <br><br>
+        <button type="button" onclick="hitungTotalBayar()" style="margin-top: 10px;">Hitung Total Bayar</button>
+    </form>
+
+    <script>
+    function hitungTotalBayar() {
+        let pembelian = document.getElementById("pembelian").value;
+        let pajak = document.getElementById("pajak").value;
+        
+        let bayar = parseInt(pembelian) + (parseInt(pembelian) * parseFloat(pajak));
+        
+       
+        console.log("Total Bayar: " + bayar);
+        
+      
+        alert("Total Bayar: " + bayar);
+    }
+    </script>
 </body>
 </html>
