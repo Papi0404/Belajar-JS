@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus Operator Aritmatika</title>
+</head>
+<body>
+    <h1>Studi Kasus Operator Aritmatika</h1>
+    <h2>Contoh Studi Kasus</h2>
+    <p>si raga beli monitor seharga Rp.2.000.000 dengan jumlah barang 7 pcs, <br>
+        toko yang baik hati ngasih diskon 10%, tapi ppnnya 15 % <br>
+        setelah diskon tentukan harga yang harus dibayar si raga dengan menggunakan operator aritmatika
+    </p>
+    <br>
+    <br>
+    <script>
+        let harga = 2000000;
+        let jumlahBarang = 7;
+        let diskon = 10 / 100;
+        let ppn = 15 / 100;
+
+        let totalHarga = harga * jumlahBarang;
+        let hargaSetelahDiskon = totalHarga - (totalHarga * diskon);
+        let hargaAkhir = hargaSetelahDiskon + (hargaSetelahDiskon * ppn);
+
+        document.write("Total Harga: Rp. " + totalHarga + "<br>");
+        document.write("Harga Setelah Diskon: Rp. " + hargaSetelahDiskon + "<br>");
+        document.write("Harga Akhir Setelah PPN: Rp. " + hargaAkhir + "<br>");
+    </script>
+</body>
+</html>
