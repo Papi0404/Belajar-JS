@@ -1,6 +1,23 @@
-let aritmatika1,operatorAritmatika,aritmatika2,hasilAritmatika;
-document.getElementById('buttonAritmatika').onclick = function(){
-    aritmatika1 = document.getElementById('aritmatikaangka1').value;
-    aritmatika1 = document.getElementById('aritmatikaangka2').valueNumber;
-    operatorAritmatika = document.getElementById('operatorAritmatika').value;
+let aritmatika1, operatorAritmatika, aritmatika2, hasilAritmatika;
+
+document.getElementById('buttonAritmatika').onclick = function() {
+
+aritmatika1 = parseInt(document.getElementById('aritmatika1').value);
+aritmatika2 = parseInt(document.getElementById('aritmatika2').value);
+operatorAritmatika = document.getElementById('operatorAritmatika').value;
+
+if (operatorAritmatika == "+") {
+    hasilAritmatika = aritmatika1 + aritmatika2;
+} else if (operatorAritmatika == "-") {
+    hasilAritmatika = aritmatika1 - aritmatika2;
+} else if (operatorAritmatika == "/") {
+    hasilAritmatika = aritmatika1 / aritmatika2;
+} else if (operatorAritmatika == "%") {
+    hasilAritmatika = aritmatika1 % aritmatika2;
+} else if (operatorAritmatika == "*") {
+    hasilAritmatika = aritmatika1 * aritmatika2;
+}
+
+document.getElementById('hasilAritmatika').innerHTML = hasilAritmatika;
+
 }
