@@ -3,146 +3,49 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Aplikasi Pengolahan Nilai Siswa</title>
+    <title>Nilai Siswa</title>
 </head>
 <body>
-
-    <h1>Aplikasi Pengolahan Nilai Siswa</h1>
-
-    <h3>Tambah Siswa</h3>
-    <input type="text" id="nama" placeholder="Nama siswa">
-    <input type="number" id="nilai" placeholder="Nilai">
-    <button onclick="tambahSiswa()">Tambah</button>
-
-    <h3>Data Siswa</h3>
-    <button onclick="tampilkanSemua()">Semua Siswa</button>
-    <button onclick="tampilkanLulus()">Nilai Minimal 75</button>
-    <button onclick="urutkanNilai()">Urutkan Nilai</button>
-
-    <table border="1" cellpadding="8">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Nilai</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody id="tabelSiswa"></tbody>
-    </table>
-
-    <p id="rataRata"></p>
-
-    <h3>Pertanyaan Analisis</h3>
-
-    <p>1. Mengapa array cocok untuk menyimpan data banyak siswa?</p>
-    <p>Karena array dapat menyimpan banyak data dalam satu variabel.</p>
-
-    <p>2. Apa perbedaan filter() dan map()?</p>
-    <p>filter() memilih data sesuai kondisi, sedangkan map() mengolah setiap data menjadi array baru.</p>
-
-    <p>3. Bagaimana menangani siswa yang belum memiliki nilai?</p>
-    <p>Nilai kosong harus diperiksa agar tidak ikut dihitung dalam rata-rata dan status kelulusannya belum ditentukan.</p>
-
     <script>
-        // Array data siswa
-        let siswa = [
-            { nama: "Andi", nilai: 80 },
-            { nama: "Budi", nilai: 70 },
-            { nama: "Citra", nilai: 90 },
-            { nama: "Dina", nilai: 65 }
-        ];
+        let namaSiswa = ["ucup", "otong", "emil", "mario"];
+        let nilai = [90, 80, 70, 60];
 
-        // Menampilkan data siswa
-        function tampilkanData(data) {
-            let tabel = document.getElementById("tabelSiswa");
-            tabel.innerHTML = "";
+         namaSiswa.push("joko");
+        nilai.push(85);
 
-            data.forEach(function(item) {
-                let status = item.nilai >= 75 ? "Lulus" : "Tidak Lulus";
-                let index = siswa.indexOf(item);
+       
+        namaSiswa.splice(1, 1);
+        nilai.splice(1, 1);
 
-                tabel.innerHTML += `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${item.nama}</td>
-                        <td>${item.nilai}</td>
-                        <td>${status}</td>
-                        <td>
-                            <button onclick="hapusSiswa(${index})">Hapus</button>
-                        </td>
-                    </tr>
-                `;
-            });
+       
+        let rata2 = nilai.reduce((a, b) => a + b, 0) / nilai.length;
 
-            // Menghitung rata-rata dengan reduce()
-            let total = siswa.reduce(function(jumlah, item) {
-                return jumlah + item.nilai;
-            }, 0);
+        document.write("<h2>Aplikasi Pengolahan Nilai Siswa</h2>");
+        document.write("<table border='1' cellpadding='5'>");
+        document.write("<tr><th>Nama</th><th>Nilai</th><th>Status</th></tr>");
 
-            let rata = siswa.length > 0 ? total / siswa.length : 0;
+      
+        let siswaLulus = nilai.filter(n => n >= 75);
 
-            document.getElementById("rataRata").innerHTML =
-                "Nilai rata-rata: " + rata.toFixed(2);
+        
+        let urutNilai = [...nilai].sort((a, b) => b - a);
+
+   
+        for (let i = 0; i < namaSiswa.length; i++) {
+            let status = nilai[i] >= 75 ? "Lulus" : "Tidak Lulus";
+
+            document.write("<tr>");
+            document.write("<td>" + namaSiswa[i] + "</td>");
+            document.write("<td>" + nilai[i] + "</td>");
+            document.write("<td>" + status + "</td>");
+            document.write("</tr>");
         }
 
-        // Menambah siswa dengan push()
-        function tambahSiswa() {
-            let nama = document.getElementById("nama").value.trim();
-            let inputNilai = document.getElementById("nilai").value;
+        document.write("</table>");
+        document.write("<p>Rata-rata: " + rata2 + "</p>");
+        document.write("<p>Siswa dengan nilai minimal 75: " + siswaLulus.length + " orang</p>");
+        document.write("<p>Nilai tertinggi ke terendah: " + urutNilai + "</p>");
 
-            if (nama === "" || inputNilai === "") {
-                alert("Nama dan nilai harus diisi!");
-                return;
-            }
-
-            let nilai = Number(inputNilai);
-
-            if (nilai < 0 || nilai > 100) {
-                alert("Nilai harus antara 0 sampai 100!");
-                return;
-            }
-
-            siswa.push({ nama: nama, nilai: nilai });
-
-            document.getElementById("nama").value = "";
-            document.getElementById("nilai").value = "";
-
-            tampilkanSemua();
-        }
-
-        // Menghapus siswa dengan splice()
-        function hapusSiswa(index) {
-            siswa.splice(index, 1);
-            tampilkanSemua();
-        }
-
-        // Menampilkan siswa dengan nilai minimal 75
-        function tampilkanLulus() {
-            let hasil = siswa.filter(function(item) {
-                return item.nilai >= 75;
-            });
-
-            tampilkanData(hasil);
-        }
-
-        // Mengurutkan nilai tertinggi ke terendah
-        function urutkanNilai() {
-            siswa.sort(function(a, b) {
-                return b.nilai - a.nilai;
-            });
-
-            tampilkanSemua();
-        }
-
-        // Menampilkan semua siswa
-        function tampilkanSemua() {
-            tampilkanData(siswa);
-        }
-
-        tampilkanSemua();
     </script>
-
 </body>
 </html>
